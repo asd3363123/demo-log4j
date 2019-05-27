@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+<!--    <Properties>-->
+<!--        <Property name="log_path">D:/log/</Property>-->
+<!--        &lt;!&ndash; 部署到server上更换为具体的log路径&ndash;&gt;-->
+<!--    </Properties>-->
+
+    <Appenders>
+        <File name="A1" fileName="d://A1.log" append="false">
+            <Log4j1XmlLayout />
+        </File>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%level - %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.apache.log4j.xml" level="debug">
+            <AppenderRef ref="A1"/>
+        </Logger>
+        <Root level="debug">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>
