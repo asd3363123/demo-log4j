@@ -6,19 +6,35 @@
 <!--    </Properties>-->
 
     <Appenders>
-        <File name="A1" fileName="d://A1.log" append="false">
-            <Log4j1XmlLayout />
+    <!--appender决定日志应该输出到什么地方-->
+        <File name="html_file" fileName="logs/test_log.html" append="false">
+            <HtmlLayout/>
         </File>
+        <RollingFile name="A2" fileName="logs/app.log"
+                     filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d %p %c [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+        </RollingFile>
         <Console name="STDOUT" target="SYSTEM_OUT">
             <PatternLayout pattern="%level - %m%n"/>
         </Console>
     </Appenders>
+
     <Loggers>
         <Logger name="org.apache.log4j.xml" level="debug">
-            <AppenderRef ref="A1"/>
+            <!--这个logger只输出到文件-->
+            <AppenderRef ref="html_file"/>
         </Logger>
         <Root level="debug">
+            <!--这个Logger既输出到控制台，又输出到文件-->
             <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="html_file"/>
+            <AppenderRef ref="A2"/>
         </Root>
     </Loggers>
 </Configuration>
