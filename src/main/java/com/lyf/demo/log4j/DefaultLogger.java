@@ -8,6 +8,7 @@ public class DefaultLogger {
     private static Logger logger = LogManager.getLogger(DefaultLogger.class);
 
     public static void main(String[] args) {
-        logger.debug("This is default logger ! Time : {}", System.currentTimeMillis());
+        logger.debug("This is default logger ! Debug Time : {}", System.currentTimeMillis());
+        logger.error("This is default logger ! Error Time : {}", System.currentTimeMillis());
     }
 }

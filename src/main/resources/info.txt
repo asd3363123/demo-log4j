@@ -1,0 +1,3 @@
+一、log4j2.properties 是优先于 log4j2.xml的 。 PropertiesConfigurationFactory -> Order(8)  ,  XmlConfigurationFactory -> Order(5)
+
+二、指定名称的控制器优先级比rootLogger高。如配置文件里：logger.rolling 优先于 rootLogger
